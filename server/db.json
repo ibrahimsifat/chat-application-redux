@@ -23,6 +23,12 @@
       "password": "$2a$10$3XZ166aDBU9xZEvNXJD0tez4DHjENqA0Cq.LoSDdqeRilMwZYd2FG",
       "name": "ibrahimsifat",
       "id": 4
+    },
+    {
+      "email": "admin@kullesh.com",
+      "password": "$2a$10$Sz69uOXJ87nOcdy62qqrF.ODJEE3Moe2D.YW6Usd/NU6Tsfllw98W",
+      "name": "ibrahim",
+      "id": 5
     }
   ],
   "conversations": [

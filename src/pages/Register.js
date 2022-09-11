@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import logoImage from "../assets/images/lws-logo-light.svg";
 import Error from "../components/ui/Error";
 import { useRegisterMutation } from "../features/auth/authApi";
@@ -10,7 +10,8 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agree, setAgree] = useState("");
   const [error, setError] = useState("");
-  const [register, { data, isLoading, isError }] = useRegisterMutation();
+  const [register, { data, isLoading, error: responseError }] =
+    useRegisterMutation();
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
@@ -25,6 +26,15 @@ export default function Register() {
     }
   };
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (responseError?.data) {
+      setError(responseError?.data);
+    }
+    if (data?.accessToken && data?.user) {
+      navigate("/inbox");
+    }
+  }, [data, responseError, navigate]);
   return (
     <div className="grid place-items-center h-screen bg-[#F9FAFB">
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
