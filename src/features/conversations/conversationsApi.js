@@ -41,7 +41,7 @@ export const conversationsApi = apiSlice.injectEndpoints({
                 conversation.message = data?.data?.message;
                 conversation.timestamp = data?.data?.timestamp;
               } else {
-                draft.data.unshift(data.data);
+                conversation.unshift(data.data);
               }
             });
           });
